@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Mi Test
+{% endblock %}
+
+{% block body %}
+    <button id="myButton">Haz clic en mí</button>
+    <div id="result"></div>
+
+    <script>
+        // Pregunta 2: Función para invertir una cadena de texto
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+        console.log(reverseString("Hello World")); // Outputs: "dlroW olleH"
+
+        // Pregunta 4: Filtrar los números pares de un array
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let evenNumbers = numbers.filter(number => number % 2 === 0);
+        console.log(evenNumbers); // Outputs: [2, 4, 6, 8]
+
+        // Pregunta 6: Añadir un event listener a un botón
+        document.getElementById('myButton').addEventListener('click', function() {
+            alert('Hello World');
+        });
+
+        // Pregunta 8: Hacer una petición AJAX con fetch
+        fetch('http://localhost:8000/product/expensive')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data);
+            })
+            .catch(error => console.error('Error:', error));
+
+        // Pregunta 10: Usar localStorage para guardar y recuperar una clave-valor
+        function saveToLocalStorage(key, value) {
+            localStorage.setItem(key, value);
+        }
+
+        function getFromLocalStorage(key) {
+            return localStorage.getItem(key);
+        }
+
+        saveToLocalStorage('name', 'John Doe');
+        console.log(getFromLocalStorage('name')); // Outputs: "John Doe"
+    </script>
+{% endblock %}
